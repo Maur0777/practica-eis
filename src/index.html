@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css"
+    />
+    <link rel="stylesheet" href="css.css" />
+
+    <title>EIS-PRACTICAS</title>
+  </head>
+  <body>
+    <!-- Vertical navbar        //src="https://www.pngkit.com/png/full/115-1150342_user-avatar-icon-iconos-de-mujeres-a-color.png" -->
+    <div class="vertical-nav bg-white" id="sidebar">
+      <div class="py-4 px-3 mb-4 bg-light">
+        <div class="media d-flex align-items-center">
+          <img
+      
+            src="views/user.png"
+            alt="..."
+            width="65"
+            class="mr-3 rounded-circle img-thumbnail shadow-sm"
+          />
+          <div class="media-body">
+            <h4 id="nameUser" class="m-0">....</h4>
+            <p id="escuelaUser" class="font-weight-light text-muted mb-0">
+              ....
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">
+        Opciones
+      </p>
+
+      <ul class="nav flex-column bg-white mb-0">
+        <li class="nav-item">
+          <a
+            href="#"
+            class="nav-link text-dark font-italic bg-light"
+            onclick="listPractices();"
+          >
+            <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+            Prácticas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="#"
+            class="nav-link text-dark font-italic"
+            onclick="listStudents();"
+          >
+            <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
+            Estudiantes
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="#"
+            class="nav-link text-dark font-italic"
+            onclick="listTeachers();"
+          >
+            <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
+            Docentes
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="#"
+            class="nav-link text-dark font-italic"
+            onclick="listCompanys();"
+          >
+            <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
+            Empresas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="#"
+            class="nav-link text-dark font-italic"
+            onclick="setDataReport()"
+          >
+            <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
+            Reportes
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="#"
+            class="nav-link text-dark font-italic"
+            onclick="profile()"
+          >
+            <i class="fa fa-picture-o mr-3 text-primary fa-fw"></i>
+            Perfil
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- End vertical navbar -->
+
+    <!-- Page content holder -->
+    <div class="page-content p-5" id="content">
+      <!-- Toggle button -->
+      <button
+        id="sidebarCollapse"
+        type="button"
+        class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"
+      >
+        <i class="fa fa-bars mr-2"></i
+        ><small class="text-uppercase font-weight-bold">Menú</small>
+      </button>
+
+      <!-- Demo content -->
+      <div id="contentDynamic" class="container-fluid">
+        <h2 class="display-4 text-white">Sistema Practicas EIS</h2>
+        <p class="lead text-white mb-0"></p>
+
+        <div class="separator"></div>
+      </div>
+    </div>
+    <!-- End demo content -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script>
+      if (typeof module === "object") {
+        window.module = module;
+        module = undefined;
+      }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"
+    ></script>
+
+    <script src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js"></script>
+
+    <script>
+      if (window.module) module = window.module;
+      $(document).ready(function () {
+        listPractices();
+      });
+
+      var fs = require("fs");
+
+      if (fs.existsSync("profile.json")) {
+        
+        var data = "{}";
+        
+        data = fs.readFileSync("profile.json", "utf8");
+
+        var obj = JSON.parse(data); //now it an object
+
+        if (obj.nombre !== undefined) {
+          $("#nameUser").html(obj.nombre);
+          $("#escuelaUser").html(obj.escuela);
+        } else{
+          $("#nameUser").html("Usuario");
+          $("#escuelaUser").html("Escuela");
+        }
+      }
+    </script>
+
+    <script src="js.js"></script>
+    <script src="models/practicesModel.js"></script>
+    <script src="models/studentsModel.js"></script>
+    <script src="models/teachersModel.js"></script>
+    <script src="models/companysModel.js"></script>
+    <script src="models/profileModel.js"></script>
+    <script src="views/practicesViews.js"></script>
+    <script src="views/studentsViews.js"></script>
+    <script src="views/teachersViews.js"></script>
+    <script src="views/companysViews.js"></script>
+    <script src="views/profileViews.js"></script>
+  </body>
+</html>
